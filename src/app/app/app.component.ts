@@ -1,21 +1,29 @@
-import { Component } from '@angular/core';
-import {FormControl, Validators} from "@angular/forms";
+import {Component, OnInit} from '@angular/core';
+import {ArrayService} from "../array.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'data_structures';
-  taskControl = new FormControl('', Validators.required);
   array = [];
 
-  addItemToList(): void {
-
+  constructor(public arrayService: ArrayService) {
   }
 
-  deleteItem(i: number): void {
+  ngOnInit(): void {
+    this.arrayService.setData();
+  }
 
+  sort(type: string) {
+    if (type === 'merge') {
+      this.arrayService.dataStore = this.arrayService.mergeSort(this.arrayService.dataStore);
+    }
+
+    if (type === 'quick') {
+      this.arrayService.dataStore = this.arrayService.quickSort(this.arrayService.dataStore);
+    }
   }
 }
