@@ -9,6 +9,8 @@ import {ArrayService} from "../array.service";
 export class AppComponent implements OnInit{
   title = 'data_structures';
   array = [];
+  min: number = Infinity;
+  max: number = -Infinity;
 
   constructor(public arrayService: ArrayService) {
   }
@@ -25,5 +27,19 @@ export class AppComponent implements OnInit{
     if (type === 'quick') {
       this.arrayService.dataStore = this.arrayService.quickSort(this.arrayService.dataStore);
     }
+  }
+
+  setData(): void {
+    this.arrayService.setData();
+    this.min = Infinity;
+    this.max = -Infinity;
+  }
+
+  findMin(): void {
+    this.min = this.arrayService.findMin(this.arrayService.dataStore);
+  }
+
+  findMax(): void {
+    this.max = this.arrayService.findMax(this.arrayService.dataStore);
   }
 }

@@ -76,6 +76,14 @@
     border: 1px solid #ccc;
     margin-bottom: 15px;
 
+    &--min {
+      border: 1px solid blue;
+    }
+
+    &--max {
+      border: 1px solid green;
+    }
+
     &:hover {
       box-shadow: 0 0 0 2px #ccc;
     }
