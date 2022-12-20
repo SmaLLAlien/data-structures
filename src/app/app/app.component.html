@@ -10,7 +10,10 @@
     <div class="form__row">
       <input type="text" class="form__input" [formControl]="searchControl" (keyup.enter)="find()" />
 
-      <button class="button" (click)="find()">Find</button>
+      <div style="display: flex; justify-content: space-between; width: 100%">
+        <button class="button" (click)="find()">sequential find</button>
+        <button class="button" (click)="find()">binary find</button>
+      </div>
     </div>
   </div>
 

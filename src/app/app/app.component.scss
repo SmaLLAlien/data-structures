@@ -26,6 +26,7 @@
     flex-wrap: wrap;
     gap: 1rem;
     margin-bottom: 15px;
+    justify-content: space-between;
   }
 
   &__input {
@@ -74,6 +75,7 @@
   display: flex;
   gap: 1rem;
   justify-content: space-between;
+  flex-wrap: wrap;
 
   &__item {
     background-color: white;
