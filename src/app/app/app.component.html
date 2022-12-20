@@ -1,14 +1,27 @@
 <div class="container">
-  <div class="header">LIST</div>
+  <div class="header">SORTING</div>
   <div class="form">
-    <input type="text" class="form__input" [formControl]="taskControl">
-    <input type="submit" class="form__add" value="Add Task" (click)="addItemToList()" [disabled]="taskControl.invalid">
+    <div class="form__row">
+      <button class="button button--shuffle" (click)="setData()">Shuffle</button>
+      <button class="button" (click)="arrayService.bubbleSort()">Sort</button>
+      <button class="button" (click)="findMin()">Find min</button>
+      <button class="button" (click)="findMax()">Find max</button>
+    </div>
+    <div class="form__row">
+      <input type="text" class="form__input" [formControl]="searchControl" (keyup.enter)="find()" />
+
+      <div style="display: flex; justify-content: space-between; width: 100%">
+        <button class="button" (click)="find()">sequential find</button>
+        <button class="button" (click)="find()">binary find</button>
+      </div>
+    </div>
   </div>
 
   <div class="list">
-    <div class="list__item" *ngFor="let item of array; let i = index">
+    <div class="list__item"
+         [ngClass]="{'list__item--min': min === item, 'list__item--max': max === item, 'list__item--searched': searched === item}"
+         *ngFor="let item of arrayService.dataStore; let i = index">
       {{item}}
-      <span class="list__del" (click)="deleteItem(i)">Delete</span>
     </div>
   </div>
 </div>
