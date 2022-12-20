@@ -1,14 +1,23 @@
 <div class="container">
   <div class="header">SORTING</div>
   <div class="form">
-    <button class="button button--shuffle" (click)="setData()">Shuffle</button>
-    <button class="button" (click)="arrayService.bubbleSort()">Sort</button>
-    <button class="button" (click)="findMin()">Find min</button>
-    <button class="button" (click)="findMax()">Find max</button>
+    <div class="form__row">
+      <button class="button button--shuffle" (click)="setData()">Shuffle</button>
+      <button class="button" (click)="arrayService.bubbleSort()">Sort</button>
+      <button class="button" (click)="findMin()">Find min</button>
+      <button class="button" (click)="findMax()">Find max</button>
+    </div>
+    <div class="form__row">
+      <input type="text" class="form__input" [formControl]="searchControl" (keyup.enter)="find()" />
+
+      <button class="button" (click)="find()">Find</button>
+    </div>
   </div>
 
   <div class="list">
-    <div class="list__item" [ngClass]="{'list__item--min': min === item, 'list__item--max': max === item}"  *ngFor="let item of arrayService.dataStore; let i = index">
+    <div class="list__item"
+         [ngClass]="{'list__item--min': min === item, 'list__item--max': max === item, 'list__item--searched': searched === item}"
+         *ngFor="let item of arrayService.dataStore; let i = index">
       {{item}}
     </div>
   </div>

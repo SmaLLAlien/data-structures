@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ArrayService} from "../array.service";
+import {FormControl, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,8 @@ export class AppComponent implements OnInit{
   array = [];
   min: number = Infinity;
   max: number = -Infinity;
+  searched: number = Infinity;
+  searchControl = new FormControl(null, Validators.required);
 
   constructor(public arrayService: ArrayService) {
   }
@@ -41,5 +44,16 @@ export class AppComponent implements OnInit{
 
   findMax(): void {
     this.max = this.arrayService.findMax(this.arrayService.dataStore);
+  }
+
+  find() {
+    const value = this.searchControl.value;
+    if (!value) {
+      return;
+    }
+    const index = this.arrayService.sequentialSearch(this.arrayService.dataStore, value);
+    if (index !== -1) {
+      this.searched = this.arrayService.dataStore[index];
+    }
   }
 }

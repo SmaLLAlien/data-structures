@@ -136,19 +136,6 @@ export class ArrayService {
     return this.merge(left, right)
   }
 
-  private merge(left: any[], right: any[]): any[] {
-    let sortedArr = [];
-    while (left.length && right.length) {
-      if (left[0] < right[0]) {
-        sortedArr.push(left.shift())
-      } else {
-        sortedArr.push(right.shift())
-      }
-    }
-
-    return [...sortedArr, ...left, ...right]
-  }
-
   findMin(arr: number[]): number {
     let min = arr[0];
     for (let i = 1; i < arr.length; ++i) {
@@ -167,5 +154,27 @@ export class ArrayService {
       }
     }
     return max;
+  }
+
+  sequentialSearch(arr: number[], data: number) {
+    for (let i = 0; i < arr.length; ++i) {
+      if (arr[i] == data) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
+  private merge(left: any[], right: any[]): any[] {
+    let sortedArr = [];
+    while (left.length && right.length) {
+      if (left[0] < right[0]) {
+        sortedArr.push(left.shift())
+      } else {
+        sortedArr.push(right.shift())
+      }
+    }
+
+    return [...sortedArr, ...left, ...right]
   }
 }

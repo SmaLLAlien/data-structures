@@ -19,10 +19,21 @@
   background-color: #eee;
   border-radius: 6px;
   padding: 20px;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
+
+  &__row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 15px;
+  }
+
+  &__input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    flex: 1;
+  }
 }
 
 .button {
@@ -82,6 +93,10 @@
 
     &--max {
       border: 1px solid green;
+    }
+
+    &--searched {
+      border: 1px solid maroon;
     }
 
     &:hover {
